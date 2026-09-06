@@ -22,6 +22,7 @@ function Button({
   disabled = false,
   className = '',
   onClick,
+  tabIndex,
   ...props
 }) {
   const classes = [
@@ -40,7 +41,7 @@ function Button({
         href={disabled ? undefined : href}
         className={classes}
         aria-disabled={disabled || undefined}
-        tabIndex={disabled ? -1 : undefined}
+        tabIndex={disabled ? -1 : tabIndex}
         onClick={disabled ? (event) => event.preventDefault() : onClick}
       >
         {children}
