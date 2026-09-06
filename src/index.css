@@ -313,6 +313,54 @@
 		font-weight: 700;
 		color: var(--color-navy);
 	}
+
+	.services-section {
+		position: relative;
+	}
+
+	.service-card {
+		border-color: rgb(21 94 239 / 0.14);
+	}
+
+	.service-card:hover {
+		border-color: rgb(21 94 239 / 0.42);
+	}
+
+	.service-card-featured {
+		border-color: var(--color-primary);
+		background: var(--color-navy) !important;
+	}
+
+	.service-card-featured h3,
+	.service-card-featured p {
+		color: var(--color-white);
+	}
+
+	.service-card-featured p {
+		color: rgb(255 255 255 / 0.72);
+	}
+
+	.service-card-featured .service-icon {
+		background: var(--color-primary);
+		color: var(--color-white);
+	}
+
+	.service-card-featured .service-arrow {
+		color: rgb(255 255 255 / 0.72);
+	}
+
+	.service-arrow {
+		transition: color 200ms ease, transform 200ms ease;
+	}
+
+	.service-card:hover .service-arrow {
+		color: var(--color-primary);
+		transform: translate(2px, -2px);
+	}
+
+	.service-card-featured:hover .service-arrow {
+		color: var(--color-white);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
