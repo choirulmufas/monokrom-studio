@@ -361,6 +361,68 @@
 	.service-card-featured:hover .service-arrow {
 		color: var(--color-white);
 	}
+
+	.achievements-section {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.achievements-section::before {
+		position: absolute;
+		top: 0;
+		right: 8%;
+		width: 180px;
+		height: 180px;
+		border: 1px solid rgb(21 94 239 / 0.28);
+		border-radius: 999px;
+		content: '';
+		transform: translateY(-45%);
+	}
+
+	.achievements-heading .type-h2 {
+		color: var(--color-white);
+	}
+
+	.achievements-heading .type-caption {
+		color: rgb(255 255 255 / 0.65);
+	}
+
+	.achievements-heading .type-body {
+		color: rgb(255 255 255 / 0.7);
+	}
+
+	.achievement-card {
+		border-color: rgb(255 255 255 / 0.14);
+		background: rgb(255 255 255 / 0.06) !important;
+		box-shadow: none;
+	}
+
+	.achievement-icon {
+		display: grid;
+		height: 40px;
+		width: 40px;
+		place-items: center;
+		border-radius: var(--radius-md);
+		background: var(--color-primary);
+		color: var(--color-white);
+	}
+
+	.achievement-mark {
+		display: block;
+		height: 8px;
+		width: 8px;
+		border-radius: 999px;
+		background: var(--color-accent);
+	}
+
+	.achievement-value {
+		margin-top: 28px;
+		color: var(--color-white);
+		font-size: 42px;
+		font-weight: 800;
+		letter-spacing: 0;
+		line-height: 1;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
