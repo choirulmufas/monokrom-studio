@@ -22,6 +22,11 @@
 	--shadow-subtle: 0 1px 3px 0 rgb(11 31 58 / 0.08);
 	--shadow-card: 0 4px 12px 0 rgb(11 31 58 / 0.08);
 	--shadow-elevated: 0 12px 24px -4px rgb(11 31 58 / 0.12);
+	--duration-fast: 150ms;
+	--duration-normal: 250ms;
+	--duration-slow: 400ms;
+	--ease-standard: cubic-bezier(0.2, 0.65, 0.3, 1);
+	--ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -113,12 +118,21 @@
 	}
 
 	.btn {
-		@apply inline-flex min-h-11 items-center justify-center rounded-md px-4 text-body font-semibold transition duration-200;
+		@apply inline-flex min-h-11 items-center justify-center rounded-md px-4 text-body font-semibold;
 		border: 1px solid transparent;
+		transition: background-color var(--duration-normal) var(--ease-standard), border-color var(--duration-normal) var(--ease-standard), color var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
+	}
+
+	.btn svg {
+		transition: transform var(--duration-fast) var(--ease-standard);
 	}
 
 	.btn:hover:not(:disabled) {
 		transform: translateY(-2px);
+	}
+
+	.btn:hover:not(:disabled) svg {
+		transform: translateX(3px);
 	}
 
 	.btn:active:not(:disabled) {
@@ -248,18 +262,35 @@
 		size: 8px;
 	}
 
-	@keyframes hero-float {
-		0%,
-		100% {
-			transform: translateY(0);
+	@keyframes hero-visual-enter {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
 		}
-		50% {
-			transform: translateY(-8px);
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
 	.animate-hero-float {
-		animation: hero-float 6s ease-in-out infinite;
+		animation: hero-visual-enter var(--duration-slow) var(--ease-emphasized) both;
+	}
+
+	.motion-reveal {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.motion-ready .motion-reveal {
+		opacity: 0;
+		transform: translateY(16px);
+		transition: opacity var(--duration-slow) var(--ease-emphasized), transform var(--duration-slow) var(--ease-emphasized);
+	}
+
+	.motion-ready .motion-reveal.is-visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	.about-section {
@@ -351,7 +382,7 @@
 	}
 
 	.service-arrow {
-		transition: color 200ms ease, transform 200ms ease;
+		transition: color var(--duration-normal) var(--ease-standard), transform var(--duration-normal) var(--ease-standard);
 	}
 
 	.service-card:hover .service-arrow {
@@ -447,6 +478,14 @@
 
 	.project-card:hover {
 		border-color: rgb(21 94 239 / 0.42);
+	}
+
+	.project-card .project-visual {
+		transition: transform var(--duration-slow) var(--ease-standard);
+	}
+
+	.project-card:hover .project-visual {
+		transform: scale(1.015);
 	}
 
 	.project-visual {
@@ -951,7 +990,7 @@
 	}
 
 	.footer-link {
-		transition: color 200ms ease;
+		transition: color var(--duration-normal) var(--ease-standard);
 	}
 
 	.footer-link:hover,
@@ -995,8 +1034,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.animate-hero-float {
-		animation: none;
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.motion-ready .motion-reveal,
+	.motion-ready .motion-reveal.is-visible {
+		opacity: 1;
+		transform: none;
 	}
 }
 

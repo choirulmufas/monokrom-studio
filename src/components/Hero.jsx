@@ -6,7 +6,7 @@ import Section from './ui/Section.jsx'
 
 function HeroVisual() {
   return (
-    <div className="hero-visual motion-safe:animate-hero-float" aria-hidden="true">
+    <div className="hero-visual animate-hero-float" aria-hidden="true">
       <div className="hero-visual-grid" />
       <div className="hero-orbit hero-orbit-one" />
       <div className="hero-orbit hero-orbit-two" />

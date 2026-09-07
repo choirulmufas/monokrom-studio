@@ -24,7 +24,7 @@ function Section({
 
   return createElement(
     as,
-    { ...props, id, className: sectionClasses },
+    { ...props, id, 'data-reveal': 'true', className: ['motion-reveal', sectionClasses].join(' ') },
     children,
   )
 }
