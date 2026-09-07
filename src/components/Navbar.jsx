@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import Button from './ui/Button.jsx'
 import Container from './ui/Container.jsx'
 
@@ -12,9 +12,30 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ]
 
+function getInitialTheme() {
+  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
+}
+
+function ThemeToggle({ theme, onToggle }) {
+  const isDark = theme === 'dark'
+
+  return (
+    <button
+      type="button"
+      className="theme-toggle"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      onClick={onToggle}
+    >
+      {isDark ? <Sun aria-hidden="true" size={18} /> : <Moon aria-hidden="true" size={18} />}
+    </button>
+  )
+}
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeHref, setActiveHref] = useState(() => window.location.hash || '#home')
+  const [theme, setTheme] = useState(getInitialTheme)
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -28,6 +49,13 @@ function Navbar() {
   const handleNavigation = (href) => {
     setActiveHref(href)
     setIsMenuOpen(false)
+  }
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark'
+    document.documentElement.dataset.theme = nextTheme
+    window.localStorage.setItem('cm-studio-theme', nextTheme)
+    setTheme(nextTheme)
   }
 
   return (
@@ -73,21 +101,25 @@ function Navbar() {
                 </li>
               ))}
             </ul>
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
             <Button href="#contact" size="sm" onClick={() => handleNavigation('#contact')}>
               Let's Talk
             </Button>
           </div>
 
-          <button
-            type="button"
-            className="inline-flex size-11 items-center justify-center rounded-md text-navy transition duration-200 hover:bg-background hover:text-primary laptop:hidden"
-            aria-controls="mobile-navigation"
-            aria-expanded={isMenuOpen}
-            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            onClick={() => setIsMenuOpen((open) => !open)}
-          >
-            {isMenuOpen ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
-          </button>
+          <div className="flex items-center gap-2 laptop:hidden">
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <button
+              type="button"
+              className="inline-flex size-11 items-center justify-center rounded-md text-navy transition duration-200 hover:bg-background hover:text-primary"
+              aria-controls="mobile-navigation"
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              {isMenuOpen ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
+            </button>
+          </div>
         </div>
 
         <div
