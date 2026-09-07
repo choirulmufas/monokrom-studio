@@ -36,6 +36,11 @@
 		box-sizing: border-box;
 	}
 
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
 	html {
 		scroll-behavior: smooth;
 	}
@@ -70,6 +75,10 @@
 		max-width: 1280px;
 		margin-inline: auto;
 		padding-inline: 20px;
+	}
+
+	.grid > * {
+		min-width: 0;
 	}
 
 	.type-display,
@@ -1022,6 +1031,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		gap: 20px;
 		border-top: 1px solid rgb(255 255 255 / 0.12);
 		margin-top: 56px;
@@ -1030,6 +1040,28 @@
 
 	.footer-top-link {
 		color: rgb(255 255 255 / 0.72);
+	}
+}
+
+@media (max-width: 767px) {
+	.cta-panel {
+		padding: 48px 20px;
+	}
+
+	.why-choose-us-summary-row {
+		flex-wrap: wrap;
+		gap: 8px 12px;
+	}
+
+	.why-choose-us-summary-value {
+		max-width: none;
+		text-align: left;
+	}
+
+	.footer-bottom {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 12px;
 	}
 }
 
