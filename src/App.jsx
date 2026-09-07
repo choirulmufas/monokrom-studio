@@ -8,6 +8,7 @@ import WhyChooseUs from './components/WhyChooseUs.jsx'
 import Process from './components/Process.jsx'
 import Testimonials from './components/Testimonials.jsx'
 import CTA from './components/CTA.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Testimonials />
         <CTA />
       </main>
+      <Footer />
     </>
   )
 }

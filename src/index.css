@@ -905,6 +905,93 @@
 		width: 180px;
 		border: 1px solid rgb(239 68 68 / 0.32);
 	}
+
+	.footer-section {
+		position: relative;
+		border-top: 1px solid rgb(255 255 255 / 0.1);
+	}
+
+	.footer-grid {
+		display: grid;
+		gap: 40px;
+	}
+
+	.footer-logo {
+		display: grid;
+		height: 36px;
+		width: 36px;
+		place-items: center;
+		border-radius: var(--radius-md);
+		background: var(--color-primary);
+		font-size: 13px;
+		font-weight: 800;
+	}
+
+	.footer-heading {
+		margin-bottom: 20px;
+		color: var(--color-white);
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	.footer-link-list {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.footer-link,
+	.footer-service {
+		color: rgb(255 255 255 / 0.62);
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	.footer-link {
+		transition: color 200ms ease;
+	}
+
+	.footer-link:hover,
+	.footer-link:focus-visible {
+		color: var(--color-white);
+	}
+
+	.footer-action-link,
+	.footer-top-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	.footer-action-link {
+		color: var(--color-white);
+	}
+
+	.footer-action-link:hover,
+	.footer-action-link:focus-visible,
+	.footer-top-link:hover,
+	.footer-top-link:focus-visible {
+		color: var(--color-primary);
+	}
+
+	.footer-bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		border-top: 1px solid rgb(255 255 255 / 0.12);
+		margin-top: 56px;
+		padding-top: 24px;
+	}
+
+	.footer-top-link {
+		color: rgb(255 255 255 / 0.72);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -943,6 +1030,10 @@
 	}
 
 	.process-track {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.footer-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
@@ -992,6 +1083,11 @@
 		display: block;
 		z-index: 2;
 		background: var(--color-white);
+	}
+
+	.footer-grid {
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 0.9fr);
+		gap: 48px;
 	}
 
 }
