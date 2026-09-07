@@ -657,6 +657,75 @@
 	.project-status {
 		color: var(--color-text-muted);
 	}
+
+	.why-choose-us-section {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.why-choose-us-section::before {
+		position: absolute;
+		top: 84px;
+		left: -18px;
+		height: 96px;
+		width: 96px;
+		border: 1px solid rgb(21 94 239 / 0.12);
+		border-radius: 999px;
+		content: '';
+	}
+
+	.why-choose-us-summary {
+		border-color: rgb(21 94 239 / 0.14);
+		background: linear-gradient(180deg, rgb(255 255 255 / 0.98) 0%, rgb(245 248 255 / 0.98) 100%);
+		box-shadow: var(--shadow-elevated);
+		padding: 0;
+	}
+
+	.why-choose-us-summary-row {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 18px;
+		border-bottom: 1px solid rgb(152 162 179 / 0.16);
+		padding-bottom: 14px;
+	}
+
+	.why-choose-us-summary-row:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.why-choose-us-summary-label {
+		color: var(--color-navy);
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	.why-choose-us-summary-value {
+		max-width: 15rem;
+		color: var(--color-text-secondary);
+		font-size: 14px;
+		line-height: 1.5;
+		text-align: right;
+	}
+
+	.why-choose-us-card {
+		border-color: rgb(21 94 239 / 0.14);
+	}
+
+	.why-choose-us-card:hover {
+		border-color: rgb(21 94 239 / 0.42);
+	}
+
+	.why-choose-us-icon {
+		display: grid;
+		height: 44px;
+		width: 44px;
+		place-items: center;
+		border-radius: var(--radius-md);
+		background: var(--color-background);
+		color: var(--color-primary);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -689,6 +758,10 @@
 	.about-visual {
 		min-height: 440px;
 	}
+
+	.why-choose-us-summary {
+		min-height: 100%;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -706,5 +779,10 @@
 
 	.type-h2 {
 		font-size: 40px;
+	}
+
+	.why-choose-us-summary {
+		position: sticky;
+		top: 104px;
 	}
 }
