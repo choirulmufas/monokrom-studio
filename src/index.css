@@ -14,6 +14,7 @@
 	--color-text-secondary: #667085;
 	--color-text-muted: #98a2b3;
 	--color-border: rgb(152 162 179 / 0.28);
+	--navbar-height: 80px;
 
 	--radius-sm: 8px;
 	--radius-md: 12px;
@@ -46,6 +47,10 @@
 		scroll-behavior: smooth;
 	}
 
+	section[id] {
+		scroll-margin-top: var(--navbar-height);
+	}
+
 	body {
 		@apply bg-background font-sans text-text-primary antialiased;
 		min-width: 320px;
@@ -76,6 +81,10 @@
 		max-width: 1280px;
 		margin-inline: auto;
 		padding-inline: 20px;
+	}
+
+	.navbar {
+		isolation: isolate;
 	}
 
 	.grid > * {

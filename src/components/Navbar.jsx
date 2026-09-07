@@ -59,7 +59,7 @@ function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-surface">
+    <header className="navbar sticky top-0 z-50 border-b border-border bg-surface shadow-subtle">
       <Container as="nav" aria-label="Main navigation" className="relative">
         <div className="flex min-h-20 items-center justify-between gap-6">
           <a
