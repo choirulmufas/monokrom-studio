@@ -6,6 +6,7 @@ import Achievements from './components/Achievements.jsx'
 import Portfolio from './components/Portfolio.jsx'
 import WhyChooseUs from './components/WhyChooseUs.jsx'
 import Process from './components/Process.jsx'
+import Testimonials from './components/Testimonials.jsx'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Portfolio />
         <WhyChooseUs />
         <Process />
+        <Testimonials />
       </main>
     </>
   )
