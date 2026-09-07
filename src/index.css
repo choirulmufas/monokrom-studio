@@ -54,7 +54,7 @@
 	body {
 		@apply bg-background font-sans text-text-primary antialiased;
 		min-width: 320px;
-		overflow-x: hidden;
+		overflow-x: clip;
 	}
 
 	button,
@@ -85,6 +85,9 @@
 
 	.navbar {
 		isolation: isolate;
+		position: sticky;
+		top: 0;
+		z-index: 50;
 	}
 
 	.grid > * {
