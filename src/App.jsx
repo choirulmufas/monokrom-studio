@@ -7,6 +7,7 @@ import Portfolio from './components/Portfolio.jsx'
 import WhyChooseUs from './components/WhyChooseUs.jsx'
 import Process from './components/Process.jsx'
 import Testimonials from './components/Testimonials.jsx'
+import CTA from './components/CTA.jsx'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <WhyChooseUs />
         <Process />
         <Testimonials />
+        <CTA />
       </main>
     </>
   )
