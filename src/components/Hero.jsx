@@ -4,7 +4,9 @@ import Container from './ui/Container.jsx'
 import Heading from './ui/Heading.jsx'
 import Section from './ui/Section.jsx'
 
-function HeroVisual() {
+function HeroVisual({ language }) {
+  const isIndonesian = language === 'id'
+
   return (
     <div className="hero-visual animate-hero-float" aria-hidden="true">
       <div className="hero-visual-grid" />
@@ -19,7 +21,7 @@ function HeroVisual() {
             <span className="size-2 rounded-full bg-navy/30" />
           </div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-text-muted">
-            cm / studio
+            MONOKROM / STUDIO
           </span>
         </div>
         <div className="space-y-5 p-5">
@@ -32,7 +34,7 @@ function HeroVisual() {
             <div className="h-24 rounded-md bg-background p-3">
               <div className="mb-3 flex items-center gap-2 text-primary">
                 <Code2 size={14} strokeWidth={2.5} />
-                <span className="text-[10px] font-bold uppercase tracking-wider">build</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider">{isIndonesian ? 'bangun' : 'build'}</span>
               </div>
               <div className="space-y-2">
                 <div className="h-1.5 w-full rounded-full bg-primary/30" />
@@ -48,7 +50,7 @@ function HeroVisual() {
             </div>
           </div>
           <div className="flex items-center justify-between rounded-md border border-primary/15 bg-white px-3 py-2.5">
-            <span className="text-[11px] font-semibold text-text-secondary">Experience score</span>
+            <span className="text-[11px] font-semibold text-text-secondary">{isIndonesian ? 'Skor pengalaman' : 'Experience score'}</span>
             <span className="text-sm font-extrabold text-primary">98%</span>
           </div>
         </div>
@@ -56,11 +58,11 @@ function HeroVisual() {
 
       <div className="hero-float-card hero-float-card-top">
         <Sparkles size={16} className="text-accent" />
-        <span>ideas → impact</span>
+        <span>{isIndonesian ? 'ide → dampak' : 'ideas → impact'}</span>
       </div>
       <div className="hero-float-card hero-float-card-bottom">
         <span className="size-2 rounded-full bg-primary" />
-        <span>systems online</span>
+        <span>{isIndonesian ? 'sistem aktif' : 'systems online'}</span>
       </div>
       <span className="hero-red-dot hero-red-dot-one" />
       <span className="hero-red-dot hero-red-dot-two" />
@@ -68,7 +70,9 @@ function HeroVisual() {
   )
 }
 
-function Hero() {
+function Hero({ language = 'id' }) {
+  const isIndonesian = language === 'id'
+
   return (
     <Section id="home" background="light" className="hero-section overflow-hidden">
       <Container>
@@ -76,31 +80,35 @@ function Hero() {
           <div className="relative z-10 flex max-w-2xl flex-col items-start">
             <span className="mb-6 inline-flex items-center gap-2 rounded-md border border-primary/20 bg-white px-3 py-1.5 text-body-small font-semibold uppercase tracking-[0.12em] text-primary shadow-subtle">
               <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
-              Digital solutions studio
+              {isIndonesian ? 'Studio solusi digital' : 'Digital solutions studio'}
             </span>
             <Heading
               as="h1"
               className="gap-5"
               title={
                 <>
-                  We build digital experiences that{' '}
-                  <span className="text-primary">matter.</span>
+                  {isIndonesian ? 'Kami membangun pengalaman digital yang ' : 'We build digital experiences that '}{' '}
+                  <span className="text-primary">{isIndonesian ? 'berarti.' : 'matter.'}</span>
                 </>
               }
-              description="CM Studio turns ideas into thoughtful websites, digital products, and technology solutions built for real people and lasting momentum."
+              description={
+                isIndonesian
+                  ? 'Monokrom Studio mengubah ide menjadi situs web, produk digital, dan solusi teknologi yang dirancang untuk kebutuhan nyata serta pertumbuhan jangka panjang.'
+                  : 'Monokrom Studio turns ideas into thoughtful websites, digital products, and technology solutions built for real people and lasting momentum.'
+              }
             />
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button href="#contact" size="lg">
-                Start a Project
+              <Button href="/contact" size="lg">
+                {isIndonesian ? 'Mulai Proyek' : 'Start a Project'}
                 <ArrowUpRight aria-hidden="true" size={18} />
               </Button>
-              <Button href="#portfolio" variant="secondary" size="lg">
-                View Our Work
+              <Button href="/portfolio" variant="secondary" size="lg">
+                {isIndonesian ? 'Lihat Karya Kami' : 'View Our Work'}
               </Button>
             </div>
           </div>
 
-          <HeroVisual />
+          <HeroVisual language={language} />
         </div>
       </Container>
     </Section>

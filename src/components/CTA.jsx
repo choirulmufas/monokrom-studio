@@ -4,7 +4,9 @@ import Container from './ui/Container.jsx'
 import Heading from './ui/Heading.jsx'
 import Section from './ui/Section.jsx'
 
-function CTA() {
+function CTA({ language = 'id' }) {
+  const isIndonesian = language === 'id'
+
   return (
     <Section id="contact" background="navy" className="cta-section">
       <Container>
@@ -14,25 +16,30 @@ function CTA() {
           <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
             <span className="cta-eyebrow">
               <Sparkles aria-hidden="true" size={16} />
-              Let&apos;s build something great
+              {isIndonesian ? 'Mari bangun sesuatu yang hebat' : "Let's build something great"}
             </span>
             <Heading
               align="center"
               className="cta-heading mt-6"
               title={
                 <>
-                  Have a project <span className="text-primary">in mind?</span>
+                  {isIndonesian ? 'Punya proyek ' : 'Have a project '}{' '}
+                  <span className="text-primary">{isIndonesian ? 'di benak?' : 'in mind?'}</span>
                 </>
               }
-              description="Whether you need a website, mobile application, UI/UX direction, software quality support, or a digital product, CM Studio is ready to start the conversation."
+              description={
+                isIndonesian
+                  ? 'Baik Anda membutuhkan situs web, aplikasi seluler, arahan UI/UX, dukungan jaminan kualitas perangkat lunak, atau produk digital, Monokrom Studio siap berdiskusi.'
+                  : 'Whether you need a website, mobile application, UI/UX direction, software quality support, or a digital product, Monokrom Studio is ready to start the conversation.'
+              }
             />
             <div className="mt-8 flex w-full flex-col justify-center gap-3 tablet:w-auto tablet:flex-row">
-              <Button href="#contact" variant="primary" size="lg" className="w-full tablet:w-auto">
-                Let&apos;s work together
+              <Button href="/contact" variant="primary" size="lg" className="w-full tablet:w-auto">
+                {isIndonesian ? 'Mari bekerja sama' : "Let's work together"}
                 <ArrowRight aria-hidden="true" size={18} />
               </Button>
-              <Button href="#portfolio" variant="secondary" size="lg" className="w-full tablet:w-auto">
-                View our work
+              <Button href="/portfolio" variant="secondary" size="lg" className="w-full tablet:w-auto">
+                {isIndonesian ? 'Lihat karya kami' : 'View our work'}
               </Button>
             </div>
           </div>

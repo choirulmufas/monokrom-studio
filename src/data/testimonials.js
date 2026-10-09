@@ -1,29 +1,44 @@
 export const testimonials = [
   {
     quote:
-      'The team brought structure to an early idea and kept the conversation clear from the first discussion through delivery.',
+      'Tim ini membawa struktur pada ide awal dan menjaga percakapan tetap jelas dari pembahasan pertama hingga penyampaian akhir.',
+    quoteEn:
+      'The team brought structure to an early idea and kept communication clear from the first conversation through final delivery.',
     name: 'Alex Morgan',
-    role: 'Product Lead',
-    company: 'Digital product project',
+    role: 'Pemimpin Produk',
+    roleEn: 'Product Lead',
+    company: 'Proyek produk digital',
+    companyEn: 'Digital product project',
     initials: 'AM',
-    status: 'Demo testimonial',
+    status: 'Testimoni demo',
+    statusEn: 'Demo testimonial',
   },
   {
     quote:
-      'CM Studio made complex decisions easier to understand and turned feedback into thoughtful, practical improvements.',
+      'Monokrom Studio membuat keputusan kompleks lebih mudah dipahami dan mengubah masukan menjadi perbaikan yang matang dan praktis.',
+    quoteEn:
+      'Monokrom Studio made complex decisions easier to understand and turned feedback into thoughtful, practical improvements.',
     name: 'Jordan Lee',
-    role: 'Founder',
-    company: 'Growing business project',
+    role: 'Pendiri',
+    roleEn: 'Founder',
+    company: 'Proyek bisnis yang tumbuh',
+    companyEn: 'Growing business project',
     initials: 'JL',
-    status: 'Demo testimonial',
+    status: 'Testimoni demo',
+    statusEn: 'Demo testimonial',
   },
   {
     quote:
-      'We appreciated the balance of careful design, modern technology, and a process that kept everyone aligned.',
+      'Kami menghargai keseimbangan antara desain yang cermat, teknologi modern, dan proses yang membuat semua orang tetap selaras.',
+    quoteEn:
+      'We valued the balance of considered design, modern technology, and a process that kept everyone aligned.',
     name: 'Taylor Brooks',
-    role: 'Operations Manager',
-    company: 'Service experience project',
+    role: 'Manajer Operasional',
+    roleEn: 'Operations Manager',
+    company: 'Proyek pengalaman layanan',
+    companyEn: 'Service experience project',
     initials: 'TB',
-    status: 'Demo testimonial',
+    status: 'Testimoni demo',
+    statusEn: 'Demo testimonial',
   },
 ]

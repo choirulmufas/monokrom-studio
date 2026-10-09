@@ -6,14 +6,24 @@ import Container from './ui/Container.jsx'
 import Heading from './ui/Heading.jsx'
 import Section from './ui/Section.jsx'
 
-function ProjectVisual({ title, variant }) {
+function ProjectVisual({ title, variant, image, language }) {
+  const isIndonesian = language === 'id'
+
+  if (image) {
+    return (
+      <div className="project-visual project-visual-image-wrap" aria-label={isIndonesian ? `Pratinjau proyek ${title}` : `${title} project preview`} role="img">
+        <img className="project-visual-image" src={image} alt="" loading="lazy" />
+      </div>
+    )
+  }
+
   return (
-    <div className={`project-visual project-visual-${variant}`} aria-label={`${title} project preview`} role="img">
+    <div className={`project-visual project-visual-${variant}`} aria-label={isIndonesian ? `Pratinjau proyek ${title}` : `${title} project preview`} role="img">
       <div className="project-visual-topline" aria-hidden="true">
         <span />
         <span />
         <span />
-        <span className="project-visual-label">CM / PROJECT</span>
+        <span className="project-visual-label">MONOKROM / {isIndonesian ? 'PROYEK' : 'PROJECT'}</span>
       </div>
       <div className="project-visual-content" aria-hidden="true">
         {variant === 'mobile' ? (
@@ -27,9 +37,9 @@ function ProjectVisual({ title, variant }) {
         ) : null}
         {variant === 'quality' ? (
           <div className="project-quality-list">
-            <span><CheckCircle2 size={14} /> Regression suite</span>
-            <span><CheckCircle2 size={14} /> Release candidate</span>
-            <span><CheckCircle2 size={14} /> Ready to ship</span>
+            <span><CheckCircle2 size={14} /> {isIndonesian ? 'Rangkaian regresi' : 'Regression suite'}</span>
+            <span><CheckCircle2 size={14} /> {isIndonesian ? 'Kandidat rilis' : 'Release candidate'}</span>
+            <span><CheckCircle2 size={14} /> {isIndonesian ? 'Siap diluncurkan' : 'Ready to ship'}</span>
           </div>
         ) : null}
         {variant !== 'mobile' && variant !== 'quality' ? (
@@ -46,48 +56,56 @@ function ProjectVisual({ title, variant }) {
   )
 }
 
-function ProjectCard({ category, description, technologies, title, url, visual }) {
+function ProjectCard({ category, categoryEn, description, descriptionEn, technologies, technologiesEn, title, url, visual, image, language }) {
+  const isIndonesian = language === 'id'
+
   return (
     <Card as="article" hover className="project-card flex flex-col overflow-hidden p-0">
-      <ProjectVisual title={title} variant={visual} />
+      <ProjectVisual title={title} variant={visual} image={image} language={language} />
       <div className="flex flex-1 flex-col p-6">
-        <Badge variant="blue" className="self-start">{category}</Badge>
+        <Badge variant="blue" className="self-start">{isIndonesian ? category : categoryEn}</Badge>
         <h3 className="mt-5 type-h4 text-navy">{title}</h3>
-        <p className="mt-3 text-body-small text-text-secondary">{description}</p>
-        <div className="mt-5 flex flex-wrap gap-2" aria-label={`${title} technologies`}>
-          {technologies.map((technology) => (
+        <p className="mt-3 text-body-small text-text-secondary">{isIndonesian ? description : descriptionEn}</p>
+        <div className="mt-5 flex flex-wrap gap-2" aria-label={isIndonesian ? `Teknologi ${title}` : `${title} technologies`}>
+          {(isIndonesian ? technologies : technologiesEn).map((technology) => (
             <span key={technology} className="project-technology">{technology}</span>
           ))}
         </div>
         {url ? (
           <a className="project-link mt-6" href={url} target="_blank" rel="noreferrer">
-            View project <ExternalLink aria-hidden="true" size={16} />
+            {isIndonesian ? 'Lihat proyek' : 'View project'} <ExternalLink aria-hidden="true" size={16} />
           </a>
         ) : (
-          <span className="project-status mt-6">Concept project <ArrowUpRight aria-hidden="true" size={16} /></span>
+          <span className="project-status mt-6">{isIndonesian ? 'Proyek konsep' : 'Concept project'} <ArrowUpRight aria-hidden="true" size={16} /></span>
         )}
       </div>
     </Card>
   )
 }
 
-function Portfolio() {
+function Portfolio({ language = 'id' }) {
+  const isIndonesian = language === 'id'
+
   return (
     <Section id="portfolio" background="white" className="portfolio-section">
       <Container>
         <Heading
-          eyebrow="Selected work and concepts"
+          eyebrow={isIndonesian ? 'Karya dan konsep terpilih' : 'Selected work and concepts'}
           title={
             <>
-              Ideas made clear, products made{' '}
-              <span className="text-primary">useful.</span>
+              {isIndonesian ? 'Ide dibuat jelas, produk dibuat ' : 'Ideas made clear, products made '}{' '}
+              <span className="text-primary">{isIndonesian ? 'berguna.' : 'useful.'}</span>
             </>
           }
-          description="A selection of portfolio and demo concepts that reflect how CM Studio brings design, technology, and quality thinking together."
+          description={
+            isIndonesian
+              ? 'Pilihan konsep portofolio dan demo yang mencerminkan bagaimana Monokrom Studio menyatukan desain, teknologi, dan pemikiran kualitas.'
+              : 'A selection of portfolio and demo concepts that reflect how Monokrom Studio brings design, technology, and quality thinking together.'
+          }
         />
 
         <div className="mt-16 grid gap-6 tablet:grid-cols-2 laptop:grid-cols-3">
-          {projects.map((project) => <ProjectCard key={project.title} {...project} />)}
+          {projects.map((project) => <ProjectCard key={project.title} {...project} language={language} />)}
         </div>
       </Container>
     </Section>

@@ -9,27 +9,53 @@ import Section from './ui/Section.jsx'
 const principles = [
   {
     icon: MousePointer2,
-    title: 'User focused',
-    description: 'We keep real people at the center of every product decision.',
+    title: {
+      en: 'User focused',
+      id: 'Berpusat pada pengguna',
+    },
+    description: {
+      en: 'We keep real people at the center of every product decision.',
+      id: 'Kami menempatkan orang nyata di pusat setiap keputusan produk.',
+    },
   },
   {
     icon: ShieldCheck,
-    title: 'Quality minded',
-    description: 'We pair thoughtful design with dependable implementation.',
+    title: {
+      en: 'Quality minded',
+      id: 'Berorientasi kualitas',
+    },
+    description: {
+      en: 'We pair thoughtful design with dependable implementation.',
+      id: 'Kami memadukan desain yang matang dengan penerapan yang dapat diandalkan.',
+    },
   },
   {
     icon: UsersRound,
-    title: 'Built together',
-    description: 'We work openly with clients from first idea to final release.',
+    title: {
+      en: 'Built together',
+      id: 'Dibangun bersama',
+    },
+    description: {
+      en: 'We work openly with clients from first idea to final release.',
+      id: 'Kami bekerja terbuka dengan klien dari ide pertama hingga rilis akhir.',
+    },
   },
   {
     icon: Blocks,
-    title: 'Made to grow',
-    description: 'We create clear foundations that can evolve with the business.',
+    title: {
+      en: 'Made to grow',
+      id: 'Dirancang untuk tumbuh',
+    },
+    description: {
+      en: 'We create clear foundations that can evolve with the business.',
+      id: 'Kami membangun fondasi yang jelas agar bisa berkembang bersama bisnis.',
+    },
   },
 ]
 
-function AboutVisual() {
+function AboutVisual({ language = 'en' }) {
+  const isIndonesian = language === 'id'
+
   return (
     <div className="about-visual" aria-hidden="true">
       <div className="about-visual-grid" />
@@ -41,7 +67,7 @@ function AboutVisual() {
             <span className="size-2 rounded-full bg-white/20" />
           </div>
           <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/50">
-            product lab
+            {isIndonesian ? 'lab produk' : 'product lab'}
           </span>
         </div>
         <div className="grid gap-5 p-5 tablet:grid-cols-[0.75fr_1.25fr]">
@@ -76,61 +102,69 @@ function AboutVisual() {
       </div>
       <div className="about-visual-note">
         <span className="size-2 rounded-full bg-primary" />
-        <span>design · build · refine</span>
+        <span>{isIndonesian ? 'desain · bangun · sempurnakan' : 'design · build · refine'}</span>
       </div>
     </div>
   )
 }
 
-function About() {
+function About({ language = 'id' }) {
+  const isIndonesian = language === 'id'
+
   return (
     <Section id="about" background="white" className="about-section">
       <Container>
         <Heading
-          eyebrow="About CM Studio"
+          eyebrow={isIndonesian ? 'Tentang Monokrom Studio' : 'About Monokrom Studio'}
           title={
             <>
-              Digital work with a clear{' '}
-              <span className="text-primary">point of view.</span>
+              {isIndonesian ? 'Pekerjaan digital dengan sudut pandang yang ' : 'Digital work with a clear '}{' '}
+              <span className="text-primary">{isIndonesian ? 'jelas.' : 'point of view.'}</span>
             </>
           }
-          description="We bring technology, design, and usability together to help organizations turn useful ideas into digital experiences people can rely on."
+          description={
+            isIndonesian
+              ? 'Kami membawa teknologi, desain, dan kegunaan bersama-sama untuk membantu organisasi mengubah ide yang bermanfaat menjadi pengalaman digital yang dapat diandalkan.'
+              : 'We bring technology, design, and usability together to help organizations turn useful ideas into digital experiences people can rely on.'
+          }
         />
 
         <div className="mt-16 grid items-center gap-14 laptop:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] laptop:gap-20">
-          <AboutVisual />
+          <AboutVisual language={language} />
 
           <div>
             <div className="space-y-5">
-              <h3 className="type-h3 text-navy">A thoughtful partner for meaningful products.</h3>
+              <h3 className="type-h3 text-navy">
+                {isIndonesian ? 'Mitra yang penuh pertimbangan untuk produk yang bermakna.' : 'A thoughtful partner for meaningful products.'}
+              </h3>
               <p className="type-body text-text-secondary">
-                CM Studio is a digital studio for teams that want to move from a rough concept to a
-                polished, useful product. We shape modern web experiences and technology solutions
-                around the people who use them and the goals they need to support.
+                {isIndonesian
+                  ? 'Monokrom Studio adalah studio digital untuk tim yang ingin bergerak dari konsep kasar menuju produk yang rapi, berguna, dan siap dipakai. Kami merancang pengalaman situs web modern serta solusi teknologi berdasarkan kebutuhan penggunanya dan tujuan yang perlu dicapai.'
+                  : 'Monokrom Studio is a digital studio for teams that want to move from a rough concept to a polished, useful product. We shape modern web experiences and technology solutions around the people who use them and the goals they need to support.'}
               </p>
               <p className="type-body text-text-secondary">
-                Our approach is practical and collaborative: understand the context, make the
-                experience clear, build on a resilient foundation, and keep improving with the
-                people closest to the work.
+                {isIndonesian
+                  ? 'Pendekatan kami praktis dan kolaboratif: pahami konteks, perjelas pengalaman, bangun fondasi yang kuat, dan terus melakukan perbaikan bersama orang-orang yang paling dekat dengan pekerjaan.'
+                  : 'Our approach is practical and collaborative: understand the context, make the experience clear, build on a resilient foundation, and keep improving with the people closest to the work.'}
               </p>
             </div>
 
             <div className="mt-8 grid gap-3 tablet:grid-cols-2">
               {principles.map(({ icon, title, description }) => (
-                <Card key={title} className="p-4" as="article">
+                <Card key={title.en} className="p-4" as="article">
                   {createElement(icon, {
                     'aria-hidden': true,
                     className: 'mb-4 text-primary',
                     size: 20,
                   })}
-                  <h4 className="type-h4 text-navy">{title}</h4>
-                  <p className="mt-2 text-body-small text-text-secondary">{description}</p>
+                  <h4 className="type-h4 text-navy">{title[language]}</h4>
+                  <p className="mt-2 text-body-small text-text-secondary">{description[language]}</p>
                 </Card>
               ))}
             </div>
 
-            <Button href="#contact" variant="secondary" className="mt-8">
-              Let&apos;s work together
+            <Button href="/contact" variant="secondary" className="mt-8">
+              {isIndonesian ? 'Mari bekerja sama' : "Let's work together"}
             </Button>
           </div>
         </div>
